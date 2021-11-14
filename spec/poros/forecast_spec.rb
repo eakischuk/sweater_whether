@@ -111,7 +111,7 @@ RSpec.describe Forecast do
     expect(@forecast.daily_weather.first[:conditions]).to eq(@weather[:daily].first[:weather].first[:description])
     expect(@forecast.daily_weather.first[:icon]).to eq(@weather[:daily].first[:weather].first[:icon])
 
-    expect(@forecast.hourly_weather.first[:time]).to eq(Time.at(@weather[:hourly].first[:dt], in: @weather[:timezone_offset]))
+    expect(@forecast.hourly_weather.first[:time]).to eq(Time.at(@weather[:hourly].first[:dt], in: @weather[:timezone_offset]).strftime("%k:%M"))
     expect(@forecast.hourly_weather.first[:temperature]).to eq(@weather[:hourly].first[:temp])
     expect(@forecast.hourly_weather.first[:conditions]).to eq(@weather[:hourly].first[:weather].first[:description])
     expect(@forecast.hourly_weather.first[:icon]).to eq(@weather[:hourly].first[:weather].first[:icon])

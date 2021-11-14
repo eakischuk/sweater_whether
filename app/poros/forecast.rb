@@ -1,6 +1,7 @@
 class Forecast
-  attr_reader :current_weather, :daily_weather, :hourly_weather
+  attr_reader :id, :current_weather, :daily_weather, :hourly_weather
   def initialize(weather)
+    @id = nil
     @current_weather = current(weather[:current], weather[:timezone_offset])
     @daily_weather = daily(weather[:daily], weather[:timezone_offset])
     @hourly_weather = hourly(weather[:hourly], weather[:timezone_offset])
@@ -38,7 +39,7 @@ class Forecast
   def hourly(data, timezone)
     data.take(8).map do |hour|
       {
-        time: convert_time(hour[:dt], timezone),
+        time: convert_time(hour[:dt], timezone).strftime("%k:%M"),
         temperature: hour[:temp],
         conditions: hour[:weather].first[:description],
         icon: hour[:weather].first[:icon]

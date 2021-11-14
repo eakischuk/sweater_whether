@@ -14,7 +14,7 @@ RSpec.describe ForecastService, :vcr do
     expect(response[:current]).to have_key(:sunset)
     expect(response[:current][:sunset]).to be_an(Integer)
     expect(response[:current]).to have_key(:temp)
-    expect(response[:current][:temp]).to be_a(Float)
+    expect(response[:current][:temp]).to be_a(Float).or be_an(Integer)
     expect(response[:current]).to have_key(:feels_like)
     expect(response[:current][:feels_like]).to be_a(Float)
     expect(response[:current]).to have_key(:humidity)

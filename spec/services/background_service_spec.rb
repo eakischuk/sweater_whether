@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe BackgroundService do
+RSpec.describe BackgroundService, :vcr do
   it 'returns an image url' do
     response = BackgroundService.background('Denver, CO')
     expect(response).to be_a(Hash)

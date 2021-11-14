@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ForecastService do
+RSpec.describe ForecastService, :vcr do
   it 'returns weather response using location' do
     response = ForecastService.weather_by_location('Denver, CO')
 

@@ -1,5 +1,5 @@
 class Background
-  attr_reader :image_urls, :credit
+  attr_reader :image_urls, :credit, :id
   def initialize(background)
     @id = nil
     @image_urls = background[:results].first[:urls]

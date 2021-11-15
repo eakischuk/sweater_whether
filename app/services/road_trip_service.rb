@@ -1,7 +1,7 @@
 class RoadTripService
   def self.road_trip(from, to)
     travel = travel_details(from, to)
-    hours = travel[:time].to_time.hour
+    hours = travel[:time]&.to_time&.hour
     weather = weather_on_arrival(to, hours)
     {
       start_city: from,
@@ -22,7 +22,10 @@ class RoadTripService
 
   def self.weather_on_arrival(destination, hours)
     forecast = destination_forecast(destination)
-    forecast[:hourly][hours - 1]
+    if hours.nil?
+    else
+      forecast[:hourly][hours - 1]
+    end
   end
 
   def self.travel_details(from, to)

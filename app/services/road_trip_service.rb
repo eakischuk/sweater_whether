@@ -13,15 +13,8 @@ class RoadTripService
 
   private
 
-  def self.destination_forecast(destination)
-    lat_long = latitude_longitude(destination)
-    lat = lat_long[:lat]
-    lon = lat_long[:lng]
-    ForecastClient.forecast(lat, lon)
-  end
-
   def self.weather_on_arrival(destination, hours)
-    forecast = destination_forecast(destination)
+    forecast = ForecastService.weather_by_location(destination)
     if hours.nil?
     else
       forecast[:hourly][hours - 1]
@@ -34,10 +27,5 @@ class RoadTripService
       time: travel[:route][:formattedTime],
       messages: travel[:info][:messages]
     }
-  end
-
-  def self.latitude_longitude(location)
-    response = GeocodingClient.get_lat_lon(location)
-    response[:results].first[:locations].first[:latLng]
   end
 end

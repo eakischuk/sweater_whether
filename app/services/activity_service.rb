@@ -15,15 +15,7 @@ class ActivityService
   private
 
   def self.current_forecast(destination)
-    lat_long = latitude_longitude(destination)
-    lat = lat_long[:lat]
-    lon = lat_long[:lng]
-    ForecastClient.forecast(lat, lon)[:current]
-  end
-
-  def self.latitude_longitude(location)
-    response = GeocodingClient.get_lat_lon(location)
-    response[:results].first[:locations].first[:latLng]
+    ForecastService.weather_by_location(destination)[:current]
   end
 
   def self.relaxation_activity

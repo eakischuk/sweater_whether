@@ -17,7 +17,6 @@ RSpec.describe ActivityClient do
       expect(response[:price]).to be_a(Float).or be_an(Integer)
       expect(response).to have_key(:key)
       expect(response[:key]).to be_a(String)
-      binding.pry
     end
   end
 end

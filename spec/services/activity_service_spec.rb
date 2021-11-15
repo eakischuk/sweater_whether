@@ -25,14 +25,18 @@ RSpec.describe ActivityService, :vcr do
     expect(response[:activities].first[:price]).to be_a(Float).or be_an(Integer)
   end
 
-  it 'returns correct activity types' do
-    response_1 = ActivityService.activities_for("Denver, CO")
-    expect(response_1[:activities][1]).to have_key(:type)
-    expect(response_1[:activities][1][:type]).to be_a(String)
-    expect(response_1[:activities][1][:type]).to eq("recreational")
-    response_2 = ActivityService.activities_for("Anchorage, AK")
-    expect(response_2[:activities][1]).to have_key(:type)
-    expect(response_2[:activities][1][:type]).to be_a(String)
-    expect(response_2[:activities][1][:type]).to eq("cooking")
+  describe 'returns correct activity types' do
+    it 'returns recreation temp > 60' do
+      response_1 = ActivityService.activities_for("Denver, CO")
+      expect(response_1[:activities][1]).to have_key(:type)
+      expect(response_1[:activities][1][:type]).to be_a(String)
+      expect(response_1[:activities][1][:type]).to eq("recreational")
+    end
+    it 'returns cooking temp < 50' do
+      response_2 = ActivityService.activities_for("Anchorage, AK")
+      expect(response_2[:activities][1]).to have_key(:type)
+      expect(response_2[:activities][1][:type]).to be_a(String)
+      expect(response_2[:activities][1][:type]).to eq("cooking")
+    end
   end
 end

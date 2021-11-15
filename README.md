@@ -38,7 +38,7 @@ Things you may want to cover:
   - add api keys to `config/application.yml`
 
 * Database creation - postgreSQL
-  - `rails db:{create,migrate}
+  - `rails db:{create,migrate}`
 
 * How to run the test suite
   - `bundle exec rspec`

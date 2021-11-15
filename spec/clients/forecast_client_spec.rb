@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe OpenWeatherClient do
+RSpec.describe ForecastClient do
   describe 'api connection' do
     it 'returns weather data' do
       lat = '39.739154'
       lng = '-104.984703'
-      response = OpenWeatherClient.forecast(lat, lng)
+      response = ForecastClient.forecast(lat, lng)
 
       expect(response).to be_a(Hash)
       expect(response).to have_key(:current)

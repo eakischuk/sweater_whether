@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe UnsplashClient do
+RSpec.describe ImageService, :vcr do
   it 'returns an image url' do
-    response = UnsplashClient.background('Denver, CO')
+    response = ImageService.background('Denver, CO')
     expect(response).to be_a(Hash)
     expect(response).to have_key(:results)
     expect(response[:results]).to be_an(Array)

@@ -1,4 +1,4 @@
-class Background
+class Image
   attr_reader :image_urls, :credit, :id
   def initialize(background)
     @id = nil

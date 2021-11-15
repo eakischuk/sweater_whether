@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe MapQuestClient do
+RSpec.describe GeocodingClient do
   describe 'api connection' do
     it 'can get latitude and longitude' do
-      response = MapQuestClient.get_lat_lon('Denver, CO')
+      response = GeocodingClient.get_lat_lon('Denver, CO')
       expect(response).to be_a(Hash)
       expect(response).to have_key(:results)
       expect(response[:results]).to be_an(Array)

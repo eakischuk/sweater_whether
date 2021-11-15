@@ -1,4 +1,4 @@
-class OpenWeatherClient
+class ForecastClient
   def self.forecast(lat, lng)
     params = {
       lat: lat,

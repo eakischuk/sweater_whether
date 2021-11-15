@@ -1,4 +1,4 @@
-class Api::V1::BackgroundController < ApplicationController
+class Api::V1::BackgroundsController < ApplicationController
   def show
     if params[:location].present?
       background = BackgroundFacade.background_search(params[:location])

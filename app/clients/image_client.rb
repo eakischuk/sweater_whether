@@ -5,8 +5,10 @@ class ImageClient
       per_page: 1,
       orientation: 'landscape'
     }
-    response = conn.get('/search/photos', params)
-    parse_json(response)
+    Rails.cache.fetch("#{location}-image") do
+      response = conn.get('/search/photos', params)
+      parse_json(response)
+    end
   end
 
   private

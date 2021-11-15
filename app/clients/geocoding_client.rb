@@ -1,7 +1,9 @@
 class GeocodingClient
   def self.get_lat_lon(location)
-    response  = conn.get('/geocoding/v1/address', {location: location})
-    parse_json(response)
+    Rails.cache.fetch("#{location.downcase}-lat-lng") do
+      response  = conn.get('/geocoding/v1/address', {location: location})
+      parse_json(response)
+    end
   end
 
   private

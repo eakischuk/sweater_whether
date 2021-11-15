@@ -1,4 +1,4 @@
-class UnsplashClient
+class ImageClient
   def self.background(location)
     params = {
       query: location,

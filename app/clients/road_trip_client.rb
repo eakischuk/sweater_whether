@@ -1,6 +1,6 @@
-class MapQuestClient
-  def self.get_lat_lon(location)
-    response  = conn.get('/geocoding/v1/address', {location: location})
+class RoadTripClient
+  def self.travel_time(from, to)
+    response  = conn.get('/directions/v2/route', { from: from, to: to })
     parse_json(response)
   end
 
@@ -8,7 +8,7 @@ class MapQuestClient
 
   def self.conn
     Faraday.new(
-      url: 'http://open.mapquestapi.com',
+      url: 'http://www.mapquestapi.com',
       params: { key: ENV['MAP_QUEST_KEY']}
     )
   end

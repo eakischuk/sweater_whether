@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Background do
+RSpec.describe Image do
   before(:each) do
     @search_results = {:total=>2627,
  :total_pages=>2627,
@@ -75,7 +75,7 @@ RSpec.describe Background do
       :social=>
        {:instagram_username=>"Dillydally.ing", :portfolio_url=>"https://dillydally.myportfolio.com", :twitter_username=>nil, :paypal_email=>nil}},
     :tags=>[{:type=>"search", :title=>"denver"}, {:type=>"search", :title=>"co"}, {:type=>"search", :title=>"usa"}]}]}
-    @background = Background.new(@search_results)
+    @background = Image.new(@search_results)
   end
   it 'exists and has attributes' do
     expect(@background.image_urls).to eq(@search_results[:results].first[:urls])

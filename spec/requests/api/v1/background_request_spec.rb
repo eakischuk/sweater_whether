@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Background API', :vcr do
+RSpec.describe 'Image API', :vcr do
   describe 'happy paths' do
     describe '/api/v1/backgrounds' do
       it 'returns background links and credit' do
